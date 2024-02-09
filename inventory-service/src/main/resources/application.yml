@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.joe.restAPIs : DEBUG
+  file: logs.log
+
+spring:
+  profiles:
+    active: DEV
+
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: DEV
+  datasource:
+    url: jdbc:postgresql://localhost:5432/inventoryservice
+    username: postgres
+    password: Bingo
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
