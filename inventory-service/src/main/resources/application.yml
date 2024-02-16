@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 0
 
 logging:
   level:
@@ -11,10 +11,17 @@ spring:
   profiles:
     active: DEV
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
 
 
 ---
 spring:
+  application:
+    name: inventory-service
   config:
     activate:
       on-profile: DEV
