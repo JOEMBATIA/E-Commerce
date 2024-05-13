@@ -1,34 +1,44 @@
 server:
   port: 8080
 
+logging:
+  level:
+    root: DEBUG
+
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
+      RouteDefinitionLocator: INFO
       routes:
+        # static route for the product service to any url of the product-service
         - id: product-service
           uri: lb://product-service
           predicates:
             - Path=/product/**
 
+        # static route for the order service
         - id: order-service
           uri: lb://order-service
           predicates:
             - Path=/order/**
 
+        # static route for the inventory service
         - id: inventory-service
           uri: lb://inventory-service
           predicates:
             - Path=/inventory/**
 
+        # static route for the discovery server and filter to modify the url to the original url
         - id: discovery-server
           uri: http://localhost:8761
           predicates:
             - Path=/eureka/web
           filters:
             - SetPath=/
-
+            -
+        # static route for the product service to any url of the discovery server and loads static pages such as the css
         - id: discovery-server-static
           uri: http://localhost:8761
           predicates:

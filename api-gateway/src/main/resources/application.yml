@@ -1,11 +1,16 @@
 server:
   port: 8080
 
+logging:
+  level:
+    root: DEBUG
+
 spring:
   application:
     name: api-gateway
   cloud:
     gateway:
+      RouteDefinitionLocator: INFO
       routes:
         # static route for the product service to any url of the product-service
         - id: product-service
