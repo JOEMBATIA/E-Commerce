@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface InventoryService {
     List<InventoryResponse> IsInStock(List<String> skuCode);
+
+    List<InventoryResponse> getAllStock();
 }

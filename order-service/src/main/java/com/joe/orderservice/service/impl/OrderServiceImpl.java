@@ -33,7 +33,10 @@ public class OrderServiceImpl implements OrderService {
                 .stream()
                 .map(this::mapToDto)
                 .toList();
-        Order order = Order.builder().orderNumber(UUID.randomUUID().toString()).orderLineItemsList(orderLineItemsList).build();
+        Order order = Order.builder()
+                .orderNumber(UUID.randomUUID().toString())
+                .orderLineItemsList(orderLineItemsList)
+                .build();
 
         List<String> skuCodes =
                 order.getOrderLineItemsList().stream().map(OrderLineItems::getSkuCode).toList();

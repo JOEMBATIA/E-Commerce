@@ -20,11 +20,11 @@ public class InventoryServiceApplication {
 		return args -> {
 			Inventory inventory = new Inventory();
 			inventory.setSkuCode("T480s");
-			inventory.setQuantity(250);
+			inventory.setQuantity(0);
 
 			Inventory inventory1 = new Inventory();
 			inventory1.setSkuCode("T1Carbon");
-			inventory1.setQuantity(1);
+			inventory1.setQuantity(250);
 
 			inventoryRepository.save(inventory);
 			inventoryRepository.save(inventory1);

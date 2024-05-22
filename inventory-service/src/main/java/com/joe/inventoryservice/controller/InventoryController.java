@@ -19,4 +19,10 @@ public class InventoryController {
     public List<InventoryResponse> fetchInventoryIsInStock(@RequestParam List<String> skuCode){
         return inventoryService.IsInStock(skuCode);
     }
+
+    @GetMapping("/allStock")
+    @ResponseStatus(HttpStatus.OK)
+    public List<InventoryResponse> getAllInventory(){
+        return inventoryService.getAllStock();
+    }
 }
